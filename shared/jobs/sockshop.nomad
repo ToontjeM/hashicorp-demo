@@ -31,7 +31,7 @@ job "sockshop" {
         command = "/usr/local/bin/node"
         args = ["server.js", "--domain=service.consul"]
         hostname = "front-end.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -80,7 +80,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/user:master-5e88df65"
         hostname = "user.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -111,7 +111,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/user-db:master-5e88df65"
         hostname = "user-db.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
 	dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
       }
@@ -151,7 +151,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/catalogue:0.3.5"
         hostname = "catalogue.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -182,13 +182,9 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/catalogue-db:0.3.5"
         hostname = "catalogue-db.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
 	dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
-      }
-
-      vault {
-	policies = ["default", "ssh_policy"]
       }
 
       template {
@@ -244,7 +240,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/carts:0.4.8"
         hostname = "carts.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -275,7 +271,7 @@ job "sockshop" {
       config {
         image = "mongo:3.4.3"
         hostname = "carts-db.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -322,7 +318,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/shipping:0.4.8"
         hostname = "shipping.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -365,7 +361,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/payment:0.4.3"
         hostname = "payment.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -414,7 +410,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/orders:0.4.7"
         hostname = "orders.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -445,7 +441,7 @@ job "sockshop" {
       config {
         image = "mongo:3.4.3"
         hostname = "orders-db.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
 	dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
 	port_map = {
@@ -492,7 +488,7 @@ job "sockshop" {
       config {
         image = "weaveworksdemos/queue-master:master-48d63b59"
         hostname = "queue-master.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
         port_map = {
@@ -535,7 +531,7 @@ job "sockshop" {
       config {
         image = "rabbitmq:3.6.8"
         hostname = "rabbitmq.service.consul"
-        network_mode = "sockshop"
+        network_mode = "bridge"
         dns_servers = ["172.17.0.1"]
         dns_search_domains = ["service.consul"]
 	port_map = {
